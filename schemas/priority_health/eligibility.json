@@ -1,0 +1,918 @@
+{
+  "schema_version": 1,
+  "table": "eligibility",
+  "source": "Priority Health APCD Data Dictionaries",
+  "source_url": "https://www.priorityhealth.com/-/media/priorityhealth/documents/provider-office/apcd-data-dictionary.pdf?hash=9F4D5C298FD9492F4BB1F91706FC7DE9&rev=6778e65a74834d2c8fce0d5acca9ba6d",
+  "source_as_of": "2021-02-23",
+  "grain": "One row per member per eligibility reporting month.",
+  "columns": [
+    {
+      "position": 1,
+      "name": "APCD_PAYER",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": null,
+      "default": "Priority Health",
+      "population": "constant"
+    },
+    {
+      "position": 2,
+      "name": "APCD_NATIONAL_PLAN_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 3,
+      "name": "APCD_INSURANCE_TYPE_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    },
+    {
+      "position": 4,
+      "name": "APCD_YEAR",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": "enrollment_year",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 5,
+      "name": "APCD_MONTH",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 2,
+      "canonical": "enrollment_month",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 6,
+      "name": "APCD_POLICY_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "group_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 7,
+      "name": "APCD_COV_LEVEL_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 3,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 8,
+      "name": "APCD_SUBSCRIBER_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 9,
+      "name": "APCD_PLAN_SPECIFIC_CONTR_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 26,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 10,
+      "name": "APCD_MBR_SUFFIX",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "subscriber_id",
+        "relation_code"
+      ]
+    },
+    {
+      "position": 11,
+      "name": "APCD_RELATIONSHIP_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "relation_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 12,
+      "name": "APCD_MBR_GENDER",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "sex",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 13,
+      "name": "APCD_MBR_DOB",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "birth_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 14,
+      "name": "APCD_MBR_CITY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "state",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "state",
+        "zip_code"
+      ]
+    },
+    {
+      "position": 15,
+      "name": "APCD_MBR_STATE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "state",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 16,
+      "name": "APCD_MBR_ZIP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": "zip_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 17,
+      "name": "APCD_MED_COV",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "enrollment_status",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 18,
+      "name": "APCD_RX_DRUG_COV",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "rx_coverage",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 19,
+      "name": "APCD_DENTAL_COV",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 20,
+      "name": "APCD_RACE_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 6,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 21,
+      "name": "APCD_RACE_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 6,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 22,
+      "name": "APCD_OTHER_RACE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 15,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 23,
+      "name": "APCD_HISPANIC_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 24,
+      "name": "APCD_ETHNICITY_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 6,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 25,
+      "name": "APCD_ETHNICITY_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 6,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 26,
+      "name": "APCD_OTHER_ETHNICITY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 27,
+      "name": "APCD_PRIMARY_INSURANCE_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 28,
+      "name": "APCD_COV_TYPE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 3,
+      "canonical": "funding",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 29,
+      "name": "APCD_MARKET_CAT_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "product",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "product",
+        "funding",
+        "plan_type"
+      ]
+    },
+    {
+      "position": 30,
+      "name": "APCD_GROUP_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "group_name",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 31,
+      "name": "APCD_SUBSCRIBER_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 32,
+      "name": "APCD_SUBSCRIBER_FIRST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 33,
+      "name": "APCD_SUBSCRIBER_MID_INITIAL",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 34,
+      "name": "APCD_MBR_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 35,
+      "name": "APCD_MBR_FIRST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 36,
+      "name": "APCD_MBR_MIDDLE_INITIAL",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 37,
+      "name": "APCD_MBR_PAT_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 38,
+      "name": "APCD_RECORD_TYPE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": "ME",
+      "population": "constant"
+    },
+    {
+      "position": 39,
+      "name": "APCD_SPECIAL_COV",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 40,
+      "name": "MDC_MBR_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 41,
+      "name": "MDC_PROD_ENROLLMENT_START_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "enrollment_start_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 42,
+      "name": "MDC_PROD_ENROLLMENT_END_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "enrollment_end_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 43,
+      "name": "MDC_MBR_STREET_ADDRESS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 44,
+      "name": "MDC_MBR_ADDRESS_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 45,
+      "name": "MDC_MBR_PCP_ID_ATTR_PHYS_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 46,
+      "name": "MDC_MBR_PCP_EFF_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "enrollment_start_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 47,
+      "name": "MDC_MBR_PCP_TERM_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "enrollment_end_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 48,
+      "name": "MDC_MED_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 49,
+      "name": "MDC_RX_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 50,
+      "name": "MDC_MED_RX_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 51,
+      "name": "MDC_BEHAVIORAL_HEALTH_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 52,
+      "name": "MDC_MBR_PHONE_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 15,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 53,
+      "name": "MDC_OFFICE_VISIT_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 54,
+      "name": "MDC_RX_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 55,
+      "name": "MDC_ER_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 56,
+      "name": "MDC_SPECIALIST_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 57,
+      "name": "MDC_COINSURANCE_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 58,
+      "name": "MBR_COUNTY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "state",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "state",
+        "zip_code"
+      ]
+    },
+    {
+      "position": 59,
+      "name": "MDC_MBR_AGE_YRS",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 3,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 60,
+      "name": "MDC_MBR_AGE_MNTHS",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 61,
+      "name": "PH_HOSPITAL_NETWORK",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 62,
+      "name": "PH_PROV_GROUP_PCP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 80,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 63,
+      "name": "PH_PCP_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 120,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 64,
+      "name": "PH_PROV_GROUP_NPI",
+      "type": "string",
+      "source_type": "Character",
+      "size": 12,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 65,
+      "name": "PH_EMP_SUBGROUP_ID",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 7,
+      "canonical": "group_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 66,
+      "name": "PH_EMP_SUBGROUP_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "group_name",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 67,
+      "name": "PH_MEDICARE_PRIM_COV_FLAG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "product",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 68,
+      "name": "PH_MAIL_POST_EXT",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "zip_code"
+      ]
+    },
+    {
+      "position": 69,
+      "name": "PH_INDIVIDUAL_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 70,
+      "name": "PH_FAMILY_DEDUCT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 71,
+      "name": "PH_RX_BRAND_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 72,
+      "name": "PH_RX_GENERIC_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 73,
+      "name": "PH_HTR_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 74,
+      "name": "PH_UC_COPAY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "product"
+      ]
+    },
+    {
+      "position": 75,
+      "name": "PH_HBC_FLAG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": "N",
+      "population": "constant"
+    },
+    {
+      "position": 76,
+      "name": "PH_HBCI_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": "N",
+      "population": "constant"
+    },
+    {
+      "position": 77,
+      "name": "PH_HRA_FLAG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "funding",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "funding",
+        "plan_type"
+      ]
+    },
+    {
+      "position": 78,
+      "name": "PH_HSA_FLAG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "funding",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "funding",
+        "plan_type"
+      ]
+    },
+    {
+      "position": 79,
+      "name": "PH_PCP_ATTRB_FLAG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "pcp_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 80,
+      "name": "PH_STATUS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "enrollment_start_date",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "enrollment_start_date",
+        "enrollment_month"
+      ]
+    },
+    {
+      "position": 81,
+      "name": "PH_RISK_SCORE",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 3,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 82,
+      "name": "APCD_BUS_SUBCAT_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    }
+  ]
+}

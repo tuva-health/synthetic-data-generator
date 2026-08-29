@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "table": "member_enrollment",
+  "source": {
+    "publisher": "Health Care Cost Institute",
+    "title": "HCCI 2.0 General Data Dictionary",
+    "version": "2.0",
+    "effective_date": "2026-07-01",
+    "url": "https://healthcostinstitute.org/wp-content/uploads/2026/06/HCCI_2.0_General_Data_Dictionary_20260701.pdf",
+    "view": "SDDV2"
+  },
+  "grain": "One row per member per active enrollment month.",
+  "columns": [
+    {
+      "ordinal": 1,
+      "name": "Z_PATID",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 19,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    },
+    {
+      "ordinal": 2,
+      "name": "MNTH",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "derived",
+      "canonical": "enrollment_month",
+      "default": null
+    },
+    {
+      "ordinal": 3,
+      "name": "YR",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 4,
+      "classification": "derived",
+      "canonical": "enrollment_year",
+      "default": null
+    },
+    {
+      "ordinal": 4,
+      "name": "SEX",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "modeled",
+      "canonical": "sex",
+      "default": null
+    },
+    {
+      "ordinal": 5,
+      "name": "AGE_BAND_CD",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 2,
+      "classification": "modeled",
+      "canonical": "age_band",
+      "default": null
+    },
+    {
+      "ordinal": 6,
+      "name": "MBR_ZIP_5_CD",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 5,
+      "classification": "modeled",
+      "canonical": "zip_code",
+      "default": null
+    },
+    {
+      "ordinal": 7,
+      "name": "MBR_STATE",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 2,
+      "classification": "modeled",
+      "canonical": "state",
+      "default": null
+    },
+    {
+      "ordinal": 8,
+      "name": "MBR_CBSA",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 5,
+      "classification": "modeled",
+      "canonical": "cbsa",
+      "default": null
+    },
+    {
+      "ordinal": 9,
+      "name": "HRR_CD",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 19,
+      "classification": "derived",
+      "canonical": "cbsa",
+      "default": null
+    },
+    {
+      "ordinal": 10,
+      "name": "PROD",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 3,
+      "classification": "modeled",
+      "canonical": "product",
+      "default": null
+    },
+    {
+      "ordinal": 11,
+      "name": "FI_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "funding",
+      "default": null
+    },
+    {
+      "ordinal": 12,
+      "name": "RX_CVG_IND",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "rx_coverage",
+      "default": null
+    },
+    {
+      "ordinal": 13,
+      "name": "MH_CVG_IND",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "mh_coverage",
+      "default": null
+    },
+    {
+      "ordinal": 14,
+      "name": "SIC",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 6,
+      "classification": "intentionally_null",
+      "canonical": null,
+      "default": null
+    },
+    {
+      "ordinal": 15,
+      "name": "OVER65_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "age",
+      "default": null
+    },
+    {
+      "ordinal": 16,
+      "name": "ESI_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "product",
+      "default": null
+    },
+    {
+      "ordinal": 17,
+      "name": "RURAL_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "zip_code",
+      "default": null
+    }
+  ]
+}

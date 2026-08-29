@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "table": "pharmacy_claims",
+  "source": {
+    "publisher": "Health Care Cost Institute",
+    "title": "HCCI 2.0 General Data Dictionary",
+    "version": "2.0",
+    "effective_date": "2026-07-01",
+    "url": "https://healthcostinstitute.org/wp-content/uploads/2026/06/HCCI_2.0_General_Data_Dictionary_20260701.pdf",
+    "view": "SDDV2"
+  },
+  "grain": "One row per adjudicated pharmacy fill transaction or adjustment.",
+  "columns": [
+    {
+      "ordinal": 1,
+      "name": "Z_PATID",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    },
+    {
+      "ordinal": 2,
+      "name": "Z_CLMID",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "claim_id",
+      "default": null
+    },
+    {
+      "ordinal": 3,
+      "name": "YR",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 4,
+      "classification": "derived",
+      "canonical": "fill_date",
+      "default": null
+    },
+    {
+      "ordinal": 4,
+      "name": "MNTH",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "derived",
+      "canonical": "fill_date",
+      "default": null
+    },
+    {
+      "ordinal": 5,
+      "name": "YRMNTH_PD",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 6,
+      "classification": "derived",
+      "canonical": "paid_date",
+      "default": null
+    },
+    {
+      "ordinal": 6,
+      "name": "FILL_DT",
+      "data_type": "Date",
+      "normalized_data_type": "Date",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "fill_date",
+      "default": null
+    },
+    {
+      "ordinal": 7,
+      "name": "CHK_DT",
+      "data_type": "Date",
+      "normalized_data_type": "Date",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "paid_date",
+      "default": null
+    },
+    {
+      "ordinal": 8,
+      "name": "AMT_NET_PAID",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "plan_paid_amount",
+      "default": null
+    },
+    {
+      "ordinal": 9,
+      "name": "CALC_ALLWD",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "allowed_amount",
+      "default": null
+    },
+    {
+      "ordinal": 10,
+      "name": "TOT_MEM_CS",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "member_paid_amount",
+      "default": null
+    },
+    {
+      "ordinal": 11,
+      "name": "DISPFEE",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "dispensing_fee",
+      "default": null
+    },
+    {
+      "ordinal": 12,
+      "name": "QUANTITY",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "quantity",
+      "default": null
+    },
+    {
+      "ordinal": 13,
+      "name": "HNPI",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "prescriber_npi",
+      "default": null
+    },
+    {
+      "ordinal": 14,
+      "name": "HNPI_BE",
+      "data_type": "Vachar",
+      "normalized_data_type": "Varchar",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "pharmacy_npi",
+      "default": null
+    },
+    {
+      "ordinal": 15,
+      "name": "DAW",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "modeled",
+      "canonical": "daw_code",
+      "default": null
+    },
+    {
+      "ordinal": 16,
+      "name": "DAYS_SUP",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "days_supply",
+      "default": null
+    },
+    {
+      "ordinal": 17,
+      "name": "NDC",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "ndc_code",
+      "default": null
+    },
+    {
+      "ordinal": 18,
+      "name": "HCCI_HL_CAT",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 2,
+      "classification": "constant",
+      "canonical": null,
+      "default": "RX"
+    },
+    {
+      "ordinal": 19,
+      "name": "OVER65_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    },
+    {
+      "ordinal": 20,
+      "name": "ESI_FLG",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    }
+  ]
+}

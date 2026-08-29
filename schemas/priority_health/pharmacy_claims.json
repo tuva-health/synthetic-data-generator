@@ -1,0 +1,1116 @@
+{
+  "schema_version": 1,
+  "table": "pharmacy_claims",
+  "source": "Priority Health APCD Data Dictionaries",
+  "source_url": "https://www.priorityhealth.com/-/media/priorityhealth/documents/provider-office/apcd-data-dictionary.pdf?hash=9F4D5C298FD9492F4BB1F91706FC7DE9&rev=6778e65a74834d2c8fce0d5acca9ba6d",
+  "source_as_of": "2021-02-23",
+  "grain": "One row per pharmacy claim or adjustment transaction; line counter is normally 1.",
+  "columns": [
+    {
+      "position": 1,
+      "name": "APCD_Payer",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": null,
+      "default": "Priority Health",
+      "population": "constant"
+    },
+    {
+      "position": 2,
+      "name": "APCD_National_Plan_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 3,
+      "name": "APCD_Insurance_Type_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    },
+    {
+      "position": 4,
+      "name": "APCD_Payer_Claim_Control_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 5,
+      "name": "APCD_Line_Counter",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": "line_number",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 6,
+      "name": "APCD_Version_Number",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": "adjustment_sequence",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "adjustment_sequence",
+        "final_action"
+      ]
+    },
+    {
+      "position": 7,
+      "name": "APCD_Policy_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "group_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 8,
+      "name": "APCD_Subscriber_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 9,
+      "name": "APCD_Plan_Specific_Contract_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 10,
+      "name": "APCD_Member_Suffix",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "subscriber_id",
+        "relation_code"
+      ]
+    },
+    {
+      "position": 11,
+      "name": "APCD_Relationship_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "relation_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 12,
+      "name": "APCD_Member_Gender",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "sex",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 13,
+      "name": "APCD_Member_DOB",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "birth_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 14,
+      "name": "APCD_Member_City",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "state",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "state",
+        "zip_code"
+      ]
+    },
+    {
+      "position": 15,
+      "name": "APCD_Member_State",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "state",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 16,
+      "name": "APCD_Member_ZIP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": "zip_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 17,
+      "name": "APCD_Date_Service_Approved",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 18,
+      "name": "APCD_Pharmacy_Number",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 30,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 19,
+      "name": "APCD_Pharmacy_Tax_ID_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 20,
+      "name": "APCD_Pharmacy_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 100,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 21,
+      "name": "APCD_National_Pharmacy_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 22,
+      "name": "APCD_Pharmacy_Location_City",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 23,
+      "name": "APCD_Pharmacy_Location_State",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 24,
+      "name": "APCD_Pharmacy_ZIP_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 25,
+      "name": "APCD_Pharmacy_Country_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": null,
+      "default": "US",
+      "population": "constant"
+    },
+    {
+      "position": 26,
+      "name": "APCD_Claim_Status",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "claim_status",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 27,
+      "name": "APCD_Drug_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "ndc_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 28,
+      "name": "APCD_Drug_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 300,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 29,
+      "name": "APCD_New_Prescription_or_Refill",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 2,
+      "canonical": "refill_number",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 30,
+      "name": "APCD_Generic_Drug_Indicator",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "generic_flag",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 31,
+      "name": "APCD_Dispense_as_Written_Code",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 1,
+      "canonical": "daw_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 32,
+      "name": "APCD_Compound_Drug_Indicator",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 33,
+      "name": "APCD_Date_Prescription_Filled",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "fill_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 34,
+      "name": "APCD_Quantity_Dispensed",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "quantity",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 35,
+      "name": "APCD_Days_Supply",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 3,
+      "canonical": "days_supply",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 36,
+      "name": "APCD_Charge_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "charge_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 37,
+      "name": "APCD_Paid_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "plan_paid_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 38,
+      "name": "APCD_Other_Amount_Paid",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 39,
+      "name": "APCD_Other_Payer_Amount_Recognized",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 40,
+      "name": "APCD_Ingredient_Cost_Or_List_Price",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "ingredient_cost",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 41,
+      "name": "APCD_Postage_Amount_Claimed",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 42,
+      "name": "APCD_Dispensing_Fee",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "dispensing_fee",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 43,
+      "name": "APCD_Copay_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "copay_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 44,
+      "name": "APCD_Coinsurance_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "coinsurance_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 45,
+      "name": "APCD_Deductible_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "deductible_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 46,
+      "name": "APCD_Prescribing_Physician_First_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 47,
+      "name": "APCD_Prescribing_Physician_Middle_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 48,
+      "name": "APCD_Prescribing_Physician_Last_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 100,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 49,
+      "name": "APCD_Prescribing_Physician_DEA_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 50,
+      "name": "APCD_Prescribing_Physician_NPI_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 51,
+      "name": "APCD_Prescribing_Physician_Plan_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 52,
+      "name": "APCD_Prescribing_Physician_License_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 53,
+      "name": "APCD_Prescribing_Physician_Street_Address",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 54,
+      "name": "APCD_Prescribing_Physician_Street_Address_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 55,
+      "name": "APCD_Prescribing_Physician_City",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 56,
+      "name": "APCD_Prescribing_Physician_State",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 57,
+      "name": "APCD_Prescribing_Physician_Zip",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "prescriber_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 58,
+      "name": "APCD_Mail_Order_pharmacy",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "mail_order_flag",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 59,
+      "name": "APCD_Script_number",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 20,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 60,
+      "name": "APCD_Single_Or_Multiple_Source_Indicator",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "generic_flag",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 61,
+      "name": "APCD_Subscriber_Last_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 62,
+      "name": "APCD_Subscriber_First_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 63,
+      "name": "APCD_Subscriber_Middle_Initial",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 64,
+      "name": "APCD_Member_Last_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 65,
+      "name": "APCD_Member_First_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 66,
+      "name": "APCD_Member_Middle_Initial",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 67,
+      "name": "APCD_Record_Type",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": "PC",
+      "population": "constant"
+    },
+    {
+      "position": 68,
+      "name": "APCD_Product_ID_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 69,
+      "name": "APCD_Recipient_PCP_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 15,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 70,
+      "name": "APCD_Member_Street_Address",
+      "type": "string",
+      "source_type": "Character",
+      "size": 124,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 71,
+      "name": "APCD_Billing_Provider_Tax_ID_Number",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "pharmacy_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 72,
+      "name": "APCD_Date_of_Payment",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "paid_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 73,
+      "name": "MDC_Frequency",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "adjustment_sequence",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "adjustment_sequence",
+        "final_action",
+        "plan_paid_amount"
+      ]
+    },
+    {
+      "position": 74,
+      "name": "MDC_Member_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 75,
+      "name": "MDC_Payer_Claim_Control_Number_Previous",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "original_claim_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "original_claim_id",
+        "adjustment_sequence"
+      ]
+    },
+    {
+      "position": 76,
+      "name": "MDC_Primary_or_Secondary_Indicator",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": "primary_coverage_indicator",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 77,
+      "name": "PH_Date_Prescription_Written",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 78,
+      "name": "PH_Allowed_amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "allowed_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 79,
+      "name": "PH_Formulary_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "generic_flag",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "generic_flag",
+        "drug_name"
+      ]
+    },
+    {
+      "position": 80,
+      "name": "PH_Route_of_Administration",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "drug_name",
+        "therapeutic_class"
+      ]
+    },
+    {
+      "position": 81,
+      "name": "PH_Drug_Unit_of_Measure",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 82,
+      "name": "PH_Carrier_Specific_Unique_Member_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 83,
+      "name": "PH_Amount_Sales_tax",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": 0.0,
+      "population": "constant"
+    },
+    {
+      "position": 84,
+      "name": "PH_Group_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 80,
+      "canonical": "group_name",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 85,
+      "name": "PH_Ingredient_Cost_Paid",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "ingredient_cost",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 86,
+      "name": "PH_Labeler_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": "ndc_code",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 87,
+      "name": "PH Drug Strength",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 88,
+      "name": "PH_Drug_Subclass",
+      "type": "string",
+      "source_type": "Character",
+      "size": 6,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 89,
+      "name": "PH_Controlled_Drug_Code",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 5,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "drug_name",
+        "therapeutic_class"
+      ]
+    },
+    {
+      "position": 90,
+      "name": "PH_PCP_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 120,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "fill_date"
+      ]
+    },
+    {
+      "position": 91,
+      "name": "PH_Risk_Group",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "risk_score"
+      ]
+    },
+    {
+      "position": 92,
+      "name": "PH_PCP_NPI",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "fill_date"
+      ]
+    },
+    {
+      "position": 93,
+      "name": "PH_Average_Wholesale_Price_Amount",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "charge_amount",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 94,
+      "name": "PH_Medicare_Primary_Coverage_Flag",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "product",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 95,
+      "name": "PH_Drug_Class_code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 96,
+      "name": "PH_Drug_class_description",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 97,
+      "name": "PH_Drug_Subclass_description",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 98,
+      "name": "PH_Drug_Group_code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 99,
+      "name": "PH_Drug_Group_description",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 100,
+      "name": "PH_Drug_supergroup_id",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 2,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 101,
+      "name": "PH_Drug_supergroup_description",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "therapeutic_class",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 102,
+      "name": "PH_Generic_Name",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "drug_name",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 103,
+      "name": "PH_Generic_Code",
+      "type": "string",
+      "source_type": "Character",
+      "size": 14,
+      "canonical": "ndc_code",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 104,
+      "name": "PH_Prescription_Origin",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": "3",
+      "population": "constant"
+    },
+    {
+      "position": 105,
+      "name": "APCD_BUS_SUBCAT_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    }
+  ]
+}

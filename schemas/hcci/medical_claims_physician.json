@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "table": "medical_claims_physician",
+  "source": {
+    "publisher": "Health Care Cost Institute",
+    "title": "HCCI 2.0 General Data Dictionary",
+    "version": "2.0",
+    "effective_date": "2026-07-01",
+    "url": "https://healthcostinstitute.org/wp-content/uploads/2026/06/HCCI_2.0_General_Data_Dictionary_20260701.pdf",
+    "view": "SDDV2"
+  },
+  "grain": "One row per adjudicated professional claim service line or adjustment line.",
+  "columns": [
+    {
+      "ordinal": 1,
+      "name": "Z_CLMID",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "claim_id",
+      "default": null
+    },
+    {
+      "ordinal": 2,
+      "name": "CLMSEQ",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 5,
+      "classification": "modeled",
+      "canonical": "line_number",
+      "default": null
+    },
+    {
+      "ordinal": 3,
+      "name": "YR",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 4,
+      "classification": "derived",
+      "canonical": "first_service_date",
+      "default": null
+    },
+    {
+      "ordinal": 4,
+      "name": "MNTH",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "derived",
+      "canonical": "first_service_date",
+      "default": null
+    },
+    {
+      "ordinal": 5,
+      "name": "CLM_FRM_TYP",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 1,
+      "classification": "modeled",
+      "canonical": "claim_form_type",
+      "default": null
+    },
+    {
+      "ordinal": 6,
+      "name": "FST_DT",
+      "data_type": "Date",
+      "normalized_data_type": "Date",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "first_service_date",
+      "default": null
+    },
+    {
+      "ordinal": 7,
+      "name": "LST_DT",
+      "data_type": "Date",
+      "normalized_data_type": "Date",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "last_service_date",
+      "default": null
+    },
+    {
+      "ordinal": 8,
+      "name": "Z_PATID",
+      "data_type": "Integer",
+      "normalized_data_type": "Integer",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    },
+    {
+      "ordinal": 9,
+      "name": "PAID_DT",
+      "data_type": "Date",
+      "normalized_data_type": "Date",
+      "length": 10,
+      "classification": "modeled",
+      "canonical": "paid_date",
+      "default": null
+    },
+    {
+      "ordinal": 10,
+      "name": "AMT_NET_PAID",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "plan_paid_amount",
+      "default": null
+    },
+    {
+      "ordinal": 11,
+      "name": "COINS",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "coinsurance_amount",
+      "default": null
+    },
+    {
+      "ordinal": 12,
+      "name": "COPAY",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "copay_amount",
+      "default": null
+    },
+    {
+      "ordinal": 13,
+      "name": "DEDUCT",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "deductible_amount",
+      "default": null
+    },
+    {
+      "ordinal": 14,
+      "name": "CALC_ALLWD",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "allowed_amount",
+      "default": null
+    },
+    {
+      "ordinal": 15,
+      "name": "TOT_MEM_CS",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "member_paid_amount",
+      "default": null
+    },
+    {
+      "ordinal": 16,
+      "name": "UNITS",
+      "data_type": "Numeric",
+      "normalized_data_type": "Numeric",
+      "length": 11,
+      "classification": "modeled",
+      "canonical": "units",
+      "default": null
+    },
+    {
+      "ordinal": 17,
+      "name": "DIAG_ICD9_CM1",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 6,
+      "classification": "intentionally_null",
+      "canonical": "diagnosis_codes[0]",
+      "default": null
+    },
+    {
+      "ordinal": 18,
+      "name": "DIAG_ICD9_CM2",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 6,
+      "classification": "intentionally_null",
+      "canonical": "diagnosis_codes[1]",
+      "default": null
+    },
+    {
+      "ordinal": 19,
+      "name": "DIAG_ICD9_CM3",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 6,
+      "classification": "intentionally_null",
+      "canonical": "diagnosis_codes[2]",
+      "default": null
+    },
+    {
+      "ordinal": 20,
+      "name": "DIAG_ICD10_CM1",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[0]",
+      "default": null
+    },
+    {
+      "ordinal": 21,
+      "name": "DIAG_ICD10_CM2",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[1]",
+      "default": null
+    },
+    {
+      "ordinal": 22,
+      "name": "DIAG_ICD10_CM3",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[2]",
+      "default": null
+    },
+    {
+      "ordinal": 23,
+      "name": "DIAG_ICD10_CM4",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[3]",
+      "default": null
+    },
+    {
+      "ordinal": 24,
+      "name": "DIAG_ICD10_CM5",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[4]",
+      "default": null
+    },
+    {
+      "ordinal": 25,
+      "name": "DIAG_ICD10_CM6",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[5]",
+      "default": null
+    },
+    {
+      "ordinal": 26,
+      "name": "DIAG_ICD10_CM7",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[6]",
+      "default": null
+    },
+    {
+      "ordinal": 27,
+      "name": "DIAG_ICD10_CM8",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[7]",
+      "default": null
+    },
+    {
+      "ordinal": 28,
+      "name": "DIAG_ICD10_CM9",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[8]",
+      "default": null
+    },
+    {
+      "ordinal": 29,
+      "name": "DIAG_ICD10_CM10",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 8,
+      "classification": "modeled",
+      "canonical": "diagnosis_codes[9]",
+      "default": null
+    },
+    {
+      "ordinal": 30,
+      "name": "PROC_CD",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 6,
+      "classification": "modeled",
+      "canonical": "hcpcs_code",
+      "default": null
+    },
+    {
+      "ordinal": 31,
+      "name": "PROCMOD",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 4,
+      "classification": "modeled",
+      "canonical": "modifier_1",
+      "default": null
+    },
+    {
+      "ordinal": 32,
+      "name": "POS",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 4,
+      "classification": "modeled",
+      "canonical": "place_of_service",
+      "default": null
+    },
+    {
+      "ordinal": 33,
+      "name": "HNPI",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "rendering_npi",
+      "default": null
+    },
+    {
+      "ordinal": 34,
+      "name": "HNPI_BE",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 32,
+      "classification": "derived",
+      "canonical": "billing_npi",
+      "default": null
+    },
+    {
+      "ordinal": 35,
+      "name": "PROV_ZIP_5_CD",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 5,
+      "classification": "modeled",
+      "canonical": "provider_zip_code",
+      "default": null
+    },
+    {
+      "ordinal": 36,
+      "name": "PROV_CBSA_CD",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 5,
+      "classification": "derived",
+      "canonical": "provider_zip_code",
+      "default": null
+    },
+    {
+      "ordinal": 37,
+      "name": "PROV_STATE",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 2,
+      "classification": "modeled",
+      "canonical": "provider_state",
+      "default": null
+    },
+    {
+      "ordinal": 38,
+      "name": "NTWRK_IND",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "network_flag",
+      "default": null
+    },
+    {
+      "ordinal": 39,
+      "name": "PRIMARY_CVG_IND",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "modeled",
+      "canonical": "primary_coverage_indicator",
+      "default": null
+    },
+    {
+      "ordinal": 40,
+      "name": "OVER65_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    },
+    {
+      "ordinal": 41,
+      "name": "HCCI_HL_CAT",
+      "data_type": "Varchar",
+      "normalized_data_type": "Varchar",
+      "length": 2,
+      "classification": "constant",
+      "canonical": null,
+      "default": "PP"
+    },
+    {
+      "ordinal": 42,
+      "name": "ESI_FLG",
+      "data_type": "Character",
+      "normalized_data_type": "Character",
+      "length": 1,
+      "classification": "derived",
+      "canonical": "person_id",
+      "default": null
+    }
+  ]
+}

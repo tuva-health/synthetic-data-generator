@@ -1,0 +1,14 @@
+Tuva Synthetic Data Generator
+Copyright 2026 Tuva Health
+
+This product is licensed under the Apache License, Version 2.0.
+
+Aetna, Priority Health, and Health Care Cost Institute (HCCI) names and marks
+belong to their respective owners. They are used only to identify independently
+modeled public file structures. The generated datasets are not official payer
+data, are not endorsed by those organizations, and contain no source records.
+
+Publisher documentation is linked from references/sources.md. This repository
+does not redistribute those source documents or their descriptive prose; its
+schemas retain minimal structural facts needed for interoperability together
+with original Tuva-authored mapping metadata.

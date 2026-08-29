@@ -1,0 +1,1716 @@
+{
+  "schema_version": 1,
+  "table": "medical_claims",
+  "source": "Priority Health APCD Data Dictionaries",
+  "source_url": "https://www.priorityhealth.com/-/media/priorityhealth/documents/provider-office/apcd-data-dictionary.pdf?hash=9F4D5C298FD9492F4BB1F91706FC7DE9&rev=6778e65a74834d2c8fce0d5acca9ba6d",
+  "source_as_of": "2021-02-23",
+  "grain": "One row per medical claim service line and adjustment transaction.",
+  "columns": [
+    {
+      "position": 1,
+      "name": "APCD_PAYER",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": null,
+      "default": "Priority Health",
+      "population": "constant"
+    },
+    {
+      "position": 2,
+      "name": "APCD_NATIONAL_PLAN_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 3,
+      "name": "APCD_INSURANCE_TYPE_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    },
+    {
+      "position": 4,
+      "name": "APCD_PYR_CLAIM_CNTRL_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 5,
+      "name": "APCD_LINE_CNTR",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": "line_number",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 6,
+      "name": "APCD_VERSION_NUM",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 4,
+      "canonical": "adjustment_sequence",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "adjustment_sequence",
+        "final_action"
+      ]
+    },
+    {
+      "position": 7,
+      "name": "APCD_POLICY_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "group_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 8,
+      "name": "APCD_SUBSCRIBER_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 9,
+      "name": "APCD_PLAN_SPECIFIC_CNTRCT_ID",
+      "type": "string",
+      "source_type": "Character",
+      "size": 26,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 10,
+      "name": "APCD_MEMBER_SUFFIX",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "subscriber_id",
+        "relation_code"
+      ]
+    },
+    {
+      "position": 11,
+      "name": "APCD_RELATIONSHIP_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "relation_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 12,
+      "name": "APCD_MEMBER_GENDER",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "sex",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 13,
+      "name": "APCD_MEMBER_DOB",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "birth_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 14,
+      "name": "APCD_MEMBER_CITY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "state",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "state",
+        "zip_code"
+      ]
+    },
+    {
+      "position": 15,
+      "name": "APCD_MEMBER_STATE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "state",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 16,
+      "name": "APCD_MEMBER_ZIP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": "zip_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 17,
+      "name": "APCD_PAID_ACNTS_PAY_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "paid_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 18,
+      "name": "APCD_ADMIT_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "admission_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 19,
+      "name": "APCD_ADMIT_HOUR",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "claim_id",
+        "admission_date"
+      ]
+    },
+    {
+      "position": 20,
+      "name": "APCD_ADMIT_TYPE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 21,
+      "canonical": "admit_type",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 21,
+      "name": "APCD_ADMIT_SRC",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "admit_source",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 22,
+      "name": "APCD_DISCHARGE_HR",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "claim_id",
+        "discharge_date"
+      ]
+    },
+    {
+      "position": 23,
+      "name": "APCD_DISCHARGE_DT",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "discharge_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 24,
+      "name": "APCD_DISCHARGE_STAT",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "discharge_status",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 25,
+      "name": "APCD_SERV_PROV_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 26,
+      "name": "APCD_SERV_PROV_TIN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 27,
+      "name": "APCD_SERV_PROV_NPI",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 28,
+      "name": "APCD_SERV_PROV_TYPE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 120,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 29,
+      "name": "APCD_SERV_PROV_FIRST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 30,
+      "name": "APCD_SERV_PROV_MID_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 31,
+      "name": "APCD_SERV_PROV_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 100,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 32,
+      "name": "APCD_SERV_PROV_SUFFIX",
+      "type": "string",
+      "source_type": "Character",
+      "size": 15,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 33,
+      "name": "APCD_SERV_PROV_SPECIALTY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 160,
+      "canonical": "specialty",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 34,
+      "name": "APCD_SERV_PROV_CITY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "rendering_npi",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "rendering_npi",
+        "provider_state"
+      ]
+    },
+    {
+      "position": 35,
+      "name": "APCD_SERV_PROV_STATE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "provider_state",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 36,
+      "name": "APCD_SERV_PROV_ZIP_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": "provider_zip_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 37,
+      "name": "APCD_TYPE_BILL_INSTNL",
+      "type": "string",
+      "source_type": "Character",
+      "size": 3,
+      "canonical": "bill_type",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 38,
+      "name": "APCD_FACILITY_TYPE_PROF",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "place_of_service",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 39,
+      "name": "APCD_CLAIM_STATUS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "claim_status",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 40,
+      "name": "APCD_ADMITTING_DIAGNOSIS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "diagnosis_codes",
+        "admission_date"
+      ]
+    },
+    {
+      "position": 41,
+      "name": "APCD_E_CODE_DIAGNOSIS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 42,
+      "name": "APCD_PRINCIPAL_DIAGNOSIS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 43,
+      "name": "APCD_OTHER_DIAGNOSIS_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 44,
+      "name": "APCD_OTHER_DIAGNOSIS_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 45,
+      "name": "APCD_OTHER_DIAGNOSIS_3",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 46,
+      "name": "APCD_OTHER_DIAGNOSIS_4",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 47,
+      "name": "APCD_OTHER_DIAGNOSIS_5",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 48,
+      "name": "APCD_OTHER_DIAGNOSIS_6",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 49,
+      "name": "APCD_OTHER_DIAGNOSIS_7",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 50,
+      "name": "APCD_OTHER_DIAGNOSIS_8",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 51,
+      "name": "APCD_OTHER_DIAGNOSIS_9",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 52,
+      "name": "APCD_OTHER_DIAGNOSIS_10",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 53,
+      "name": "APCD_OTHER_DIAGNOSIS_11",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 54,
+      "name": "APCD_OTHER_DIAGNOSIS_12",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 55,
+      "name": "APCD_REVENUE_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "revenue_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 56,
+      "name": "APCD_PROCEDURE_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "hcpcs_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 57,
+      "name": "APCD_PROC_MODIFIER_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "modifier_1",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 58,
+      "name": "APCD_PROC_MODIFIER_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "modifier_2",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 59,
+      "name": "APCD_ICD_PROC_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 60,
+      "name": "APCD_DT_OF_SERVICE_FROM",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "first_service_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 61,
+      "name": "APCD_DT_OF_SERVICE_THRU",
+      "type": "date",
+      "source_type": "Date",
+      "size": 8,
+      "canonical": "last_service_date",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 62,
+      "name": "APCD_QUANTITY",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "units",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 63,
+      "name": "APCD_CHARGE_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 64,
+      "name": "APCD_PAID_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "plan_paid_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 65,
+      "name": "APCD_PREPAID_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 66,
+      "name": "APCD_COPAY_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "copay_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 67,
+      "name": "APCD_COINS_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "coinsurance_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 68,
+      "name": "APCD_DEDUCT_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "deductible_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 69,
+      "name": "APCD_PAT_ACCT_CNTRL_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 35,
+      "canonical": "claim_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 70,
+      "name": "APCD_SERVICE_PROV_CNTRY_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": null,
+      "default": "US",
+      "population": "constant"
+    },
+    {
+      "position": 71,
+      "name": "APCD_DRG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "drg_code",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 72,
+      "name": "APCD_DRG_VERSION",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 73,
+      "name": "APCD_APR_DRG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "drg_code",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "drg_code",
+        "product"
+      ]
+    },
+    {
+      "position": 74,
+      "name": "APCD_APR_DRG_VERSION",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 75,
+      "name": "APCD_APC",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 76,
+      "name": "APCD_APC_VERSION",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 77,
+      "name": "APCD_DRUG_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 11,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 78,
+      "name": "APCD_BILLING_PROV_NUM",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": "billing_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 79,
+      "name": "APCD_BILLING_PROV_NPI",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "billing_npi",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 80,
+      "name": "APCD_BILLING_PROV_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 100,
+      "canonical": "billing_npi",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 81,
+      "name": "APCD_SUBSCR_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 82,
+      "name": "APCD_SUBSCR_FIRST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 83,
+      "name": "APCD_SUBSCR_MIDDLE_INIT",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "subscriber_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 84,
+      "name": "APCD_MEMBER_LAST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 85,
+      "name": "APCD_MEMBER_FIRST_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 50,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 86,
+      "name": "APCD_MEMBER_MIDDLE_INIT",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 87,
+      "name": "APCD_RECORD_TYPE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": "MC",
+      "population": "constant"
+    },
+    {
+      "position": 88,
+      "name": "APCD_MEMBER_ID_PAT",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "member_id",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 89,
+      "name": "MDC_PAYER_CLM_CNTRL_NUM_PREV",
+      "type": "string",
+      "source_type": "Character",
+      "size": 40,
+      "canonical": "original_claim_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "original_claim_id",
+        "adjustment_sequence"
+      ]
+    },
+    {
+      "position": 90,
+      "name": "MDC_MEMBER_SSN",
+      "type": "string",
+      "source_type": "Character",
+      "size": 9,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 91,
+      "name": "MDC_OTHER_DIAGNOSIS_13",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 92,
+      "name": "MDC_OTHER_DIAGNOSIS_14",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 93,
+      "name": "MDC_OTHER_DIAGNOSIS_15",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 94,
+      "name": "MDC_OTHER_DIAGNOSIS_16",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 95,
+      "name": "MDC_OTHER_DIAGNOSIS_17",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 96,
+      "name": "MDC_OTHER_DIAGNOSIS_18",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 97,
+      "name": "MDC_OTHER_DIAGNOSIS_19",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 98,
+      "name": "MDC_OTHER_DIAGNOSIS_20",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 99,
+      "name": "MDC_OTHER_DIAGNOSIS_21",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 100,
+      "name": "MDC_OTHER_DIAGNOSIS_22",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 101,
+      "name": "MDC_OTHER_DIAGNOSIS_23",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 102,
+      "name": "MDC_OTHER_DIAGNOSIS_24",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 103,
+      "name": "MDC_OTHER_DIAGNOSIS_25",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 104,
+      "name": "MDC_OTHER_DIAGNOSIS_26",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 105,
+      "name": "MDC_OTHER_DIAGNOSIS_27",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 106,
+      "name": "MDC_OTHER_DIAGNOSIS_28",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 107,
+      "name": "MDC_OTHER_DIAGNOSIS_29",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 108,
+      "name": "MDC_OTHER_DIAGNOSIS_30",
+      "type": "string",
+      "source_type": "Character",
+      "size": 8,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 109,
+      "name": "MDC_PROC_MOD_3",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "modifier_3",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 110,
+      "name": "MDC_PROC_MOD_4",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "modifier_4",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 111,
+      "name": "MDC_OTHR_ICD_PROC_CD_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 112,
+      "name": "MDC_OTHR_ICD_PROC_CD_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 113,
+      "name": "MDC_OTHR_ICD_PROC_CD_3",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 114,
+      "name": "MDC_OTHR_ICD_PROC_CD_4",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 115,
+      "name": "MDC_OTHR_ICD_PROC_CD_5",
+      "type": "string",
+      "source_type": "Character",
+      "size": 7,
+      "canonical": "procedure_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 116,
+      "name": "MDC_HEADER_LINE_PYMNT_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 117,
+      "name": "MDC_MANAGED_CARE_WITHHOLD",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": null,
+      "default": 0.0,
+      "population": "constant"
+    },
+    {
+      "position": 118,
+      "name": "MDC_DIAGNOSIS_CD_POINTER_1",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 119,
+      "name": "MDC_DIAGNOSIS_CD_POINTER_2",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 120,
+      "name": "MDC_DIAGNOSIS_CD_POINTER_3",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 121,
+      "name": "MDC_DIAGNOSIS_CD_POINTER_4",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 122,
+      "name": "MDC_POA_ADMIT_DIAGNOSIS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "poa_codes",
+        "admission_date"
+      ]
+    },
+    {
+      "position": 123,
+      "name": "MDC_POA_PRIMARY_DIAGNOSIS",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 124,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_01",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 125,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_02",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 126,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_03",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 127,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_04",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 128,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_05",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 129,
+      "name": "MDC_POA_OTHER_DIAGNOSIS_06",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "poa_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 130,
+      "name": "MDC_PROF_FAC_FLG",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "claim_type",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 131,
+      "name": "MDC_AMT_COB",
+      "type": "number",
+      "source_type": "Float",
+      "size": 10,
+      "canonical": "other_payer_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 132,
+      "name": "MDC_FREQUENCY",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "adjustment_sequence",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "adjustment_sequence",
+        "final_action",
+        "plan_paid_amount"
+      ]
+    },
+    {
+      "position": 133,
+      "name": "MDC_REASON_CD_01",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 134,
+      "name": "MDC_REASON_CD_02",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 135,
+      "name": "MDC_REASON_CD_03",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 136,
+      "name": "MDC_REASON_CD_04",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 137,
+      "name": "MDC_REASON_CD_05",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 138,
+      "name": "MDC_REASON_CD_06",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 139,
+      "name": "MDC_REASON_CD_07",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 140,
+      "name": "MDC_REASON_CD_08",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 141,
+      "name": "MDC_REMARK_CD_01",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 142,
+      "name": "MDC_REMARK_CD_02",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 143,
+      "name": "MDC_REMARK_CD_03",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 144,
+      "name": "MDC_REMARK_CD_04",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 145,
+      "name": "MDC_REMARK_CD_05",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 146,
+      "name": "MDC_REMARK_CD_06",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 147,
+      "name": "MDC_REMARK_CD_07",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 148,
+      "name": "MDC_REMARK_CD_08",
+      "type": "string",
+      "source_type": "Character",
+      "size": 5,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 149,
+      "name": "MDC_PRIM_SEC_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 10,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 150,
+      "name": "MDC_ICD_VERS_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 2,
+      "canonical": "diagnosis_codes",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 151,
+      "name": "PH_ALLOWED_AMT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "allowed_amount",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 152,
+      "name": "PH_CAPITATED_SERV_IND",
+      "type": "string",
+      "source_type": "Character",
+      "size": 1,
+      "canonical": "service_category",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 153,
+      "name": "PH_ALLOWED_UNITS_SERVICE",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 15,
+      "canonical": "units",
+      "default": null,
+      "population": "canonical"
+    },
+    {
+      "position": 154,
+      "name": "PH_PROV_GROUP_PCP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 80,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "first_service_date"
+      ]
+    },
+    {
+      "position": 155,
+      "name": "PH_PCP_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 150,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "first_service_date"
+      ]
+    },
+    {
+      "position": 156,
+      "name": "PH_RISK_GROUP",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "risk_score"
+      ]
+    },
+    {
+      "position": 157,
+      "name": "PH_UB_ATT_PHYSICIAN_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 30,
+      "canonical": null,
+      "default": null,
+      "population": "intentionally_null"
+    },
+    {
+      "position": 158,
+      "name": "PH_PCP_NPI",
+      "type": "integer",
+      "source_type": "Integer",
+      "size": 15,
+      "canonical": "member_id",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "member_id",
+        "first_service_date"
+      ]
+    },
+    {
+      "position": 159,
+      "name": "PH_APPROVED_AMOUNT",
+      "type": "number",
+      "source_type": "Float",
+      "size": 15,
+      "canonical": "plan_paid_amount",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 160,
+      "name": "PH_BILLING_FAC_NAME",
+      "type": "string",
+      "source_type": "Character",
+      "size": 60,
+      "canonical": "billing_npi",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "billing_npi",
+        "facility_npi"
+      ]
+    },
+    {
+      "position": 161,
+      "name": "PH_REPORT_CAT_CODE",
+      "type": "string",
+      "source_type": "Character",
+      "size": 20,
+      "canonical": "service_category",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 162,
+      "name": "PH_REPORT_CAT_DESC",
+      "type": "string",
+      "source_type": "Character",
+      "size": 120,
+      "canonical": "service_category",
+      "default": null,
+      "population": "derived"
+    },
+    {
+      "position": 163,
+      "name": "APCD_BUS_SUBCAT_CD",
+      "type": "string",
+      "source_type": "Character",
+      "size": 4,
+      "canonical": "plan_type",
+      "default": null,
+      "population": "derived",
+      "canonical_inputs": [
+        "plan_type",
+        "funding",
+        "product"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tuva-synthetic-data-generator"
+version = "0.1.0"
+description = "Deterministic, payer-shaped synthetic healthcare claims datasets"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{name = "Tuva Health"}]
+keywords = ["healthcare", "claims", "synthetic-data", "tuva", "dbt"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/tuva-health/tuva-synthetic-data-generator"
+Repository = "https://github.com/tuva-health/tuva-synthetic-data-generator"
+Documentation = "https://thetuvaproject.com/connectors/synthetic-data-generator"
+Issues = "https://github.com/tuva-health/tuva-synthetic-data-generator/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+tuva-synthetic = "tuva_synthetic.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
