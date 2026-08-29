@@ -67,10 +67,10 @@ intentional because the target is a raw analytical table rather than a plan
 sponsor transport file.
 
 The adapter is a projection, not a data cleaner. It preserves deliberately
-injected missing or invalid place-of-service, diagnosis, procedure, and revenue
-codes; claim-level DRG conflicts; denial and reversal status; negative
-adjustments; and financial inconsistencies. That makes the result suitable for
-testing connector behavior and Tuva Core Data Quality checks.
+injected missing or invalid place-of-service, diagnosis, and revenue codes;
+claim-level DRG conflicts; denial and reversal status; negative adjustments;
+and financial inconsistencies. That makes the result suitable for testing
+connector behavior and Tuva Core Data Quality checks.
 
 All people, organizations, identifiers, and utilization records emitted by the
 generator are synthetic. Public documentation is used only to model structure.

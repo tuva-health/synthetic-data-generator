@@ -15,14 +15,14 @@ The checked-in ordered schemas cover all 201 fields in the July 2026 PDF:
 | Synthetic raw table | Published fields | Synthetic grain |
 | --- | ---: | --- |
 | `member_enrollment` | 17 | member × active month |
-| `medical_claims_inpatient` | 76 | inpatient service or adjustment line |
-| `medical_claims_outpatient` | 46 | outpatient/emergency facility service or adjustment line |
-| `medical_claims_physician` | 42 | professional service or adjustment line |
-| `pharmacy_claims` | 20 | pharmacy fill or adjustment transaction |
+| `medical_claims_inpatient` | 76 | inpatient service line |
+| `medical_claims_outpatient` | 46 | outpatient/emergency facility service line |
+| `medical_claims_physician` | 42 | professional service line |
+| `pharmacy_claims` | 20 | pharmacy fill |
 
 Each column records its ordinal, published name, published data type and
-length, concise meaning, canonical source, default, and whether it is modeled,
-derived, constant, or intentionally null. The schemas preserve the PDF's
+length, canonical source, default, and whether it is modeled, derived,
+constant, or intentionally null. The schemas preserve the PDF's
 `Vachar` spelling for pharmacy `HNPI_BE` and separately identify `Varchar` as
 the normalized type for DDL.
 
@@ -34,10 +34,10 @@ the normalized type for DDL.
   identifier is not stable across data contributors.
 - `Z_CLMID` is a contributor-scoped 32-digit deterministic claim hash.
   Admission and visit identifiers are separate 32-character hashes based on
-  the original claim, so adjustment lines remain grouped.
+  the claim, so related service lines remain grouped.
 - Provider and billing-entity NPIs use a contributor-independent,
   32-character SHA-256 prefix. This models HCCI's cross-contributor stability,
-  but does not claim to reproduce HCCI's or Humana's encryption algorithm.
+  but does not claim to reproduce HCCI's proprietary transformation.
 - Enrollment and claim months are emitted as two digits even though the PDF
   gives `MNTH` a length of 8. This follows the field description rather than
   padding the value.
@@ -58,10 +58,12 @@ the normalized type for DDL.
   industry.
 - Allowed amount, net plan payment, total member cost share, coinsurance,
   copay, and deductible are projected independently. This intentionally
-  preserves injected arithmetic errors, negative reversals, denied claims,
-  and adjustments for downstream Tuva Data Quality evaluation.
-- Invalid or missing POS, diagnosis, CPT/HCPCS, ICD-10-PCS, DRG, and revenue
-  codes are not sanitized. Multiple DRGs on lines of one claim are preserved.
+  preserves injected arithmetic errors and denied claims for downstream Tuva
+  Data Quality evaluation.
+- Injected missing or invalid POS, diagnosis, DRG, bill-type, revenue-center,
+  and pharmacy values are not sanitized. Multiple DRGs on lines of one claim
+  are preserved. HCCI has no scored adjustment history because its public
+  layout does not expose sufficient status and lineage fields.
 
 ## Limitations
 

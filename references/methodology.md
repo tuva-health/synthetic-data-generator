@@ -113,9 +113,9 @@ or disambiguated source names in exact schema order.
 | `priority_health` | `medical_claims.csv.gz` | Claim service line or adjustment transaction |
 | `priority_health` | `pharmacy_claims.csv.gz` | Pharmacy transaction |
 | `priority_health` | `eligibility.csv.gz` | Member × eligibility reporting month |
-| `hcci` | `medical_claims_inpatient.csv.gz` | Inpatient service or adjustment line |
-| `hcci` | `medical_claims_outpatient.csv.gz` | Outpatient or emergency facility service or adjustment line |
-| `hcci` | `medical_claims_physician.csv.gz` | Professional service or adjustment line |
+| `hcci` | `medical_claims_inpatient.csv.gz` | Inpatient service line |
+| `hcci` | `medical_claims_outpatient.csv.gz` | Outpatient or emergency facility service line |
+| `hcci` | `medical_claims_physician.csv.gz` | Professional service line |
 | `hcci` | `pharmacy_claims.csv.gz` | Pharmacy transaction |
 | `hcci` | `member_enrollment.csv.gz` | Member × active enrollment month |
 
