@@ -57,7 +57,8 @@ locator, and the exact Tuva Core DQ contract commit used to define the result.
    source dictionaries, Tuva Input Layer contracts, and ordinary Connector
    Builder instructions.
 3. Have the agent profile source tables, infer claim and enrollment grains,
-   implement mappings, and run Tuva Core with Input Data Quality enabled.
+   implement mappings, and run Tuva Core with Structural Data Quality and
+   Logical Data Quality enabled.
 4. Capture the built relations, test results, and any agent-authored source
    assumptions before revealing ground truth.
 5. Compare the final-action Tuva rows and Data Quality findings with the

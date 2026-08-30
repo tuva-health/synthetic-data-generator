@@ -26,10 +26,10 @@ decisions are independent implementation choices documented under
 ## Evaluation integrity
 
 The raw corpus includes low-density, nonuniform data problems aligned to Tuva
-Input Data Quality and connector transaction behavior. The private issue
-manifest is the evaluator's answer key. Never commit it, mix it with the raw
-output files, or give it to the connector-building agent before a blind run is
-complete.
+Structural Data Quality, Logical Data Quality, and connector transaction
+behavior. The private issue manifest is the evaluator's answer key. Never
+commit it, mix it with the raw output files, or give it to the
+connector-building agent before a blind run is complete.
 
 Use `--issue-profile none` for a clean diagnostic control. Use a fresh seed if
 ground truth from an evaluation run has leaked into the builder's context.
