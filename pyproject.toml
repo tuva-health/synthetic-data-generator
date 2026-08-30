@@ -23,7 +23,7 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/tuva-health/tuva-synthetic-data-generator"
 Repository = "https://github.com/tuva-health/tuva-synthetic-data-generator"
-Documentation = "https://thetuvaproject.com/connectors/synthetic-data-generator"
+Documentation = "https://thetuvaproject.com/synthetic-data"
 Issues = "https://github.com/tuva-health/tuva-synthetic-data-generator/issues"
 
 [project.optional-dependencies]
