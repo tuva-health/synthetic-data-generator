@@ -1,6 +1,6 @@
 # Tuva Synthetic Data Generator
 
-[![CI](https://github.com/tuva-health/tuva-synthetic-data-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/tuva-health/tuva-synthetic-data-generator/actions/workflows/ci.yml)
+[![CI](https://github.com/tuva-health/synthetic-data-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/tuva-health/synthetic-data-generator/actions/workflows/ci.yml)
 
 Deterministic, wholly synthetic longitudinal claims data shaped like public
 Aetna, Priority Health, and HCCI data dictionaries. The primary use case is a
@@ -45,8 +45,8 @@ this repository and keep the chosen seed and row-level manifest undisclosed.
 Python 3.11 or newer is required.
 
 ```bash
-git clone https://github.com/tuva-health/tuva-synthetic-data-generator.git
-cd tuva-synthetic-data-generator
+git clone https://github.com/tuva-health/synthetic-data-generator.git
+cd synthetic-data-generator
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev]'
 .venv/bin/pytest

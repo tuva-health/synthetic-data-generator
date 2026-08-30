@@ -4,7 +4,7 @@ Do not include credentials, private data, PHI, or sensitive reproduction steps
 in a public issue.
 
 Report security vulnerabilities privately through
-[GitHub Security Advisories](https://github.com/tuva-health/tuva-synthetic-data-generator/security/advisories/new).
+[GitHub Security Advisories](https://github.com/tuva-health/synthetic-data-generator/security/advisories/new).
 Include the affected revision, impact, and a minimal reproduction that uses no
 real healthcare data.
 

@@ -21,10 +21,10 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/tuva-health/tuva-synthetic-data-generator"
-Repository = "https://github.com/tuva-health/tuva-synthetic-data-generator"
+Homepage = "https://github.com/tuva-health/synthetic-data-generator"
+Repository = "https://github.com/tuva-health/synthetic-data-generator"
 Documentation = "https://thetuvaproject.com/synthetic-data"
-Issues = "https://github.com/tuva-health/tuva-synthetic-data-generator/issues"
+Issues = "https://github.com/tuva-health/synthetic-data-generator/issues"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
